@@ -21,8 +21,8 @@
             <input class="form-control mr-sm-5" type="search" placeholder="O que você procura..." aria-label="Search" style="width: 400px;">
           </form>
           <div class="clearfix">
-            <i id="buy" class='fas fa-shopping-cart mr-4 text-secondary' style="font-size: 30px;"></i>
-            <span class="badge badge-success"></span>
+            <i id="buy" class='fas fa-shopping-cart mr-4 text-secondary' style="font-size: 30px;"><span style="font-size: 15px;" class="badge badge-pill badge-success" id="qt_prods"></span></i>
+            
             <i id="user" class='fas fa-user mr-4 text-secondary' style="font-size: 30px;"></i>
             <i id="newuser" class='fas fa-user-plus mr-2 text-success' style="font-size: 30px;"></i>
           </div>
@@ -39,23 +39,23 @@
             <form action="" method="POST">
               <div class="form-group">
                 <label for="nome">Nome:</label>
-                <select name="" id="nome" class="form-control">
+                <select name="" id="nome_prod" class="form-control">
                   <option value=""></option>
                   <option value="1">Crescente</option>
                   <option value="2">Decrescente</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="nome">Preço:</label>
-                <select name="" id="nome" class="form-control">
+                <label for="preco">Preço:</label>
+                <select name="" id="preco" class="form-control">
                   <option value=""></option>
                   <option value="1">Mais barato</option>
                   <option value="2">Mais caro</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="nome">Marca:</label>
-                <select name="" id="nome" class="form-control">
+                <label for="marca">Marca:</label>
+                <select name="" id="marca" class="form-control">
                   <option value=""></option>
                 </select>
               </div>
@@ -110,17 +110,18 @@
             <button type="close" class="close" data-dismiss="modal"><span style="color: red;">&times;</span></button>    
         </div>
         <div class="modal-body">
-            <form action="" method="POST">
+            <form method="POST" id="form_login">
               <div class="form-group">
                 <label for="email">E-mail:</label>
-                <input class="form-control" type="email" id="email" placeholder="Digite o email...">
+                <input class="form-control" type="email" name="email" id="email" placeholder="Digite o email...">
               </div>
               <div class="form-group">
                 <label for="senha">Senha:</label>
-                <input class="form-control" type="senha" id="senha" placeholder="Digite a senha...">
+                <input class="form-control" type="password" name="senha" id="senha" placeholder="Digite a senha...">
               </div>
-              <button id="btn_enviar" class="btn btn-primary"><i class="fas fa-sign-in-alt mr-2"></i>Entrar</button>
-            </form>  
+              <button onclick="logar()" class="btn btn-primary"><i class="fas fa-sign-in-alt mr-2"></i>Entrar</button>
+            </form>
+
         </div>
       </div>
     </div>
@@ -140,53 +141,53 @@
               
               <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input class="form-control" type="nome" id="nome" placeholder="Digite o nome...">
+                <input class="form-control" type="nome" id="nome_cadastro" placeholder="Digite o nome...">
               </div>
 
               <div class="form-group">
                 <label for="email">E-mail:</label>
-                <input class="form-control" type="email" id="email" placeholder="Digite o email...">
+                <input class="form-control" type="email" id="email_cadastro" placeholder="Digite o email...">
               </div>
 
               <div class="form-row">
                 <div class="col">
                   <label for="senha">Senha:</label>
-                  <input class="form-control" type="senha" id="senha" placeholder="Digite a senha...">
+                  <input class="form-control" type="senha" id="senha_cadastro" placeholder="Digite a senha...">
                 </div>
                 <div class="col">
                   <label for="senha2">Confirme a senha:</label>
-                  <input class="form-control" type="senha2" id="senha2" placeholder="Digite a senha novamente...">
+                  <input class="form-control" type="senha2" id="senha2_cadastro" placeholder="Digite a senha novamente...">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col">
                   <label for="cep">CEP:</label>
-                  <input class="form-control" type="cep" id="cep" placeholder="Digite o cep...">
+                  <input class="form-control" type="cep" id="cep_cadastro" placeholder="Digite o cep...">
                 </div>
                 <div class="col">
                   <label for="cidade">Cidade:</label>
-                  <input class="form-control" type="cidade" id="cidade" placeholder="Digite a cidade...">
+                  <input class="form-control" type="cidade" id="cidade_cadastro" placeholder="Digite a cidade...">
                 </div>
               </div>
               <div class="form-row">
                 <div class="col">
                   <label for="estado">Estado:</label>
-                  <input class="form-control" type="estado" id="estado" placeholder="Digite o estado...">
+                  <input class="form-control" type="estado" id="estado_cadastro" placeholder="Digite o estado...">
                 </div>
                 <div class="col">
                   <label for="bairro">Bairro:</label>
-                  <input class="form-control" type="bairro" id="bairro" placeholder="Digite a cidade...">
+                  <input class="form-control" type="bairro" id="bairro_cadastro" placeholder="Digite a cidade...">
                 </div>
               </div>
               <div class="form-row">
                 <div class="col">
                   <label for="rua">Rua:</label>
-                  <input class="form-control" type="rua" id="rua" placeholder="Digite o nome da rua...">
+                  <input class="form-control" type="rua" id="rua_cadastro" placeholder="Digite o nome da rua...">
                 </div>
                 <div class="col">
                   <label for="numero">Numero:</label>
-                  <input class="form-control" type="numero" id="numero" placeholder="Digite o numero da casa...">
+                  <input class="form-control" type="numero" id="numero_cadastro" placeholder="Digite o numero da casa...">
                 </div>
               </div>
               

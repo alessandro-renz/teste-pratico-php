@@ -24,5 +24,41 @@ $(function(){
 
 function addCarrinho(id)
 {
-	$.getJSON("/HomeController/getProdsByAjax")
+	$.getJSON("home/getProdsByAjax/"+id, function(res){
+		$.ajax({
+			url:"home/insertProdsByAjax",
+			type:'POST',
+			dataType:"JSON",
+			data:{id:res.id, nome:res.nome, preco:res.preco, url:res.url},
+			success:function(res){
+				var qt = res.length;
+				$("#qt_prods").html(qt);
+			}
+		});
+	});
+}
+function getQT()
+{
+	$.getJSON("home/getQtProds/", function(res){
+		var qt = res.length;
+		$("#qt_prods").html(qt);
+	});
+}
+getQT();
+
+function logar(){
+	$("#form_login").bind("submit", function(e){
+		e.preventDefault();
+		var form = $(this).serialize();
+		$.ajax({
+			url:"home/checkUser",
+			type:'POST',
+			dataType:"JSON",
+			data:form,
+			success:function(res){
+				console.log(res.length);
+			}
+		});
+	});
+	
 }

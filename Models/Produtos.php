@@ -16,4 +16,17 @@ class Produtos extends Model{
 
 		return $array;
 	}
+	public function getProdById($id)
+	{
+		$array = array();
+		$sql = $this->db->prepare("SELECT * FROM produtos WHERE id=?");
+		$sql->bindValue(1, $id);
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
 }
