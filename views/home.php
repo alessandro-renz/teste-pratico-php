@@ -15,15 +15,16 @@
       <div class="col-12">
         <nav class="navbar navbar-light bg-light">
           <a class="navbar-brand">
-            <img src="<?=URL?>assets/images/onehost.jpg" height="80px">
+            <img src="<?=URL?>assets/images/onehost.jpg" style="height: 100px;">
           </a>
           <form class="form-inline">
             <input class="form-control mr-sm-5" type="search" placeholder="O que você procura..." aria-label="Search" style="width: 400px;">
           </form>
           <div class="clearfix">
-            <i id="buy" class='fas fa-shopping-cart mr-4' style="font-size: 30px;"></i>
+            <i id="buy" class='fas fa-shopping-cart mr-4 text-secondary' style="font-size: 30px;"></i>
             <span class="badge badge-success"></span>
-            <i id="user" class='fas fa-user mr-2' style="font-size: 30px;"></i>
+            <i id="user" class='fas fa-user mr-4 text-secondary' style="font-size: 30px;"></i>
+            <i id="newuser" class='fas fa-user-plus mr-2 text-success' style="font-size: 30px;"></i>
           </div>
         </nav>
       </div>
@@ -58,7 +59,6 @@
                   <option value=""></option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary">Filtrar</button>
             </form>
           </div>
         </div>
@@ -67,26 +67,29 @@
       <div class="col-sm-9">
         <h4>Produtos</h4>
         <hr>
-        <div class="card" id="produto">
+        <?php foreach($produtos as $p): ?>
+        
+        <div class="card mt-2" id="produto">
           <div class="card-body">
             <div class="card-title">
-              <h5>Categoria</h5>
+              <h5><?=ucwords($p['fornecedor'])?></h5>
               <hr id="linhaProduto">
               <div class="clear-fix">
                 <div class="float-left">
-                  <img src="<?=URL?>assets/images/onehost.jpg" >
+                  <img src="<?=URL?>assets/<?=$p['url']?>" style="height: 150px;width: 150px;">
                 </div>
                 <div class="float-left ml-5">
-                  <h4>Nome Do produto</h4>
-                  <h5>R$1000,00</h5>
+                  <h4><?=ucwords($p['nome'])?></h4>
+                  <h5>R$<?=str_replace(".", ",", $p['preco'])?></h5>
                 </div>
                 <div class="float-right mt-4">
-                    <button class="btn btn-success"><i class="fas fa-plus mr-2"></i>Adicionar no carrinho</button>
+                    <button onclick="addCarrinho(<?=$p['id']?>)" class="btn btn-success"><i class="fas fa-plus mr-2"></i>Adicionar no carrinho</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      <?php endforeach; ?>
       </div>
     </div> 
   
@@ -98,7 +101,7 @@
 </body>
 </html>
 
-<!-- Modal !-->
+<!-- Modal de login!-->
 <div class="modal fade" id="login">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -116,7 +119,78 @@
                 <label for="senha">Senha:</label>
                 <input class="form-control" type="senha" id="senha" placeholder="Digite a senha...">
               </div>
-              <button type="submit" class="btn btn-primary">Entrar</button>
+              <button id="btn_enviar" class="btn btn-primary"><i class="fas fa-sign-in-alt mr-2"></i>Entrar</button>
+            </form>  
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!-- Modal de cadastro!-->
+<div class="modal fade" id="cadastro">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4><strong>Cadastro</strong></h4>
+            <button type="close" class="close" data-dismiss="modal"><span style="color: red;">&times;</span></button>    
+        </div>
+        <div class="modal-body">
+            <form action="" method="POST">
+              
+              <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input class="form-control" type="nome" id="nome" placeholder="Digite o nome...">
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input class="form-control" type="email" id="email" placeholder="Digite o email...">
+              </div>
+
+              <div class="form-row">
+                <div class="col">
+                  <label for="senha">Senha:</label>
+                  <input class="form-control" type="senha" id="senha" placeholder="Digite a senha...">
+                </div>
+                <div class="col">
+                  <label for="senha2">Confirme a senha:</label>
+                  <input class="form-control" type="senha2" id="senha2" placeholder="Digite a senha novamente...">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col">
+                  <label for="cep">CEP:</label>
+                  <input class="form-control" type="cep" id="cep" placeholder="Digite o cep...">
+                </div>
+                <div class="col">
+                  <label for="cidade">Cidade:</label>
+                  <input class="form-control" type="cidade" id="cidade" placeholder="Digite a cidade...">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <label for="estado">Estado:</label>
+                  <input class="form-control" type="estado" id="estado" placeholder="Digite o estado...">
+                </div>
+                <div class="col">
+                  <label for="bairro">Bairro:</label>
+                  <input class="form-control" type="bairro" id="bairro" placeholder="Digite a cidade...">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <label for="rua">Rua:</label>
+                  <input class="form-control" type="rua" id="rua" placeholder="Digite o nome da rua...">
+                </div>
+                <div class="col">
+                  <label for="numero">Numero:</label>
+                  <input class="form-control" type="numero" id="numero" placeholder="Digite o numero da casa...">
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-plus mr-2"></i>Cadastrar</button>
             </form>  
         </div>
       </div>
