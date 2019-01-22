@@ -21,13 +21,9 @@
             <input class="form-control mr-sm-5" type="search" placeholder="O que você procura..." aria-label="Search" style="width: 400px;">
           </form>
           <div class="clearfix">
-            <a href="#" class="float-left mr-4">
-              <i class='fas fa-shopping-cart' style="font-size: 30px;"></i>
-              <span class="badge badge-success"></span>
-            </a>
-            <a href="#" class="float-left mr-2">
-              <i class='fas fa-user mr-1' style="font-size: 30px;"></i>
-            </a>
+            <i id="buy" class='fas fa-shopping-cart mr-4' style="font-size: 30px;"></i>
+            <span class="badge badge-success"></span>
+            <i id="user" class='fas fa-user mr-2' style="font-size: 30px;"></i>
           </div>
         </nav>
       </div>
@@ -54,6 +50,12 @@
                   <option value=""></option>
                   <option value="1">Mais barato</option>
                   <option value="2">Mais caro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="nome">Marca:</label>
+                <select name="" id="nome" class="form-control">
+                  <option value=""></option>
                 </select>
               </div>
               <button type="submit" class="btn btn-primary">Filtrar</button>
@@ -95,3 +97,28 @@
 	<script type="text/javascript" src="<?=URL?>assets/js/script.js"></script>
 </body>
 </html>
+
+<!-- Modal !-->
+<div class="modal fade" id="login">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4><strong>Login</strong></h4>
+            <button type="close" class="close" data-dismiss="modal"><span style="color: red;">&times;</span></button>    
+        </div>
+        <div class="modal-body">
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input class="form-control" type="email" id="email" placeholder="Digite o email...">
+              </div>
+              <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input class="form-control" type="senha" id="senha" placeholder="Digite a senha...">
+              </div>
+              <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>  
+        </div>
+      </div>
+    </div>
+</div>
