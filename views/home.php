@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Projeto</title>
     <link rel="stylesheet" href="<?=URL?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=URL?>assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body onload="loadPage()">
@@ -17,8 +18,22 @@
           <a class="navbar-brand">
             <img src="<?=URL?>assets/images/onehost.jpg" style="height: 100px;">
           </a>
-          <form class="form-inline">
-            <input class="form-control mr-sm-5" type="search" placeholder="O que você procura..." aria-label="Search" style="width: 400px;">
+          <form method="POST" id="form-search">
+            <div class="form-group clearfix">
+              <input class="form-control float-left" type="text" id="search" placeholder="O que você procura..." style="width: 500px;">
+              <button id="btn-search" class="btn btn-default float-left"><i class="fas fa-search"></i></button>
+            </div>
+            <i id="campoSearch"></i>
+
+            <!-- lista da busca !-->
+            <div id="busca" class='mt-4' style="display: none;">
+              <div class="card">
+                <div class="card-body" id="body_busca">
+                 
+                </div>
+              </div>
+            </div>
+             <!-- fim da lista da busca !-->
           </form>
           <div class="clearfix icones">
             <i id="buy" class='fas fa-shopping-cart mr-2 float-left text-secondary' style="font-size: 30px;"><span style="font-size: 15px;" class="badge badge-pill badge-success" id="qt_prods"></span></i>
@@ -73,35 +88,38 @@
       </div>
 
       <div class="col-sm-9">
-        <h4>Produtos</h4>
-        <hr>
+        <!-- card default !-->
+        <div id="cards" style="display: block;">
+          <h4>Produtos</h4>
+          <hr>
         <?php foreach($produtos as $p): ?>
-        
-        <div class="card mt-2" id="produto">
-          <div class="card-body">
-            <div class="card-title">
-              <h5><?=ucwords($p['fornecedor'])?></h5>
-              <hr id="linhaProduto">
-              <div class="clear-fix">
-                <div class="float-left">
-                  <img src="<?=URL?>assets/<?=$p['url']?>" style="height: 150px;width: 150px;">
-                </div>
-                <div class="float-left ml-5">
-                  <h4><?=ucwords($p['nome'])?></h4>
-                  <h5>R$<?=str_replace(".", ",", $p['preco'])?></h5>
-                </div>
-                <div class="float-right mt-4">
-                    <button onclick="addCarrinho(<?=$p['id']?>)" class="btn btn-success"><i class="fas fa-plus mr-2"></i>Adicionar no carrinho</button>
+          <div class="card mt-2" id="produto">
+            <div class="card-body">
+              <div class="card-title">
+                <h5><?=ucwords($p['fornecedor'])?></h5>
+                <hr id="linhaProduto">
+                <div class="clearfix">
+                  <div class="float-left">
+                    <img src="<?=URL?>assets/<?=$p['url']?>" style="height: 150px;width: 150px;">
+                  </div>
+                  <div class="float-left ml-5">
+                    <h4><?=ucwords($p['nome'])?></h4>
+                    <h5>R$<?=str_replace(".", ",", $p['preco'])?></h5>
+                  </div>
+                  <div class="float-right mt-4">
+                      <button onclick="addCarrinho(<?=$p['id']?>)" class="btn btn-success"><i class="fas fa-plus mr-2"></i>Adicionar no carrinho</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+         
+        <?php endforeach; ?>
         </div>
-      <?php endforeach; ?>
+      <!-- fim card default !--> 
       </div>
     </div> 
-  
-	</div>
+  </div>
 
 	<script type="text/javascript" src="<?=URL?>assets/js/jquery.js"></script>
 	<script type="text/javascript" src="<?=URL?>assets/js/bootstrap.bundle.min.js"></script>

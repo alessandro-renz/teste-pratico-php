@@ -135,3 +135,62 @@ function loadPage()
 	getQT();
 	verificaSessao();
 }
+
+$("#search").keyup(function(){
+	var txt = $(this).val();
+	
+	$.ajax({
+		type:"POST",
+		url:"home/getItem",
+		dataType:'json',
+		data:{txt:txt},
+		success:function(res){
+			if(txt.length >2){
+				$("#cards").attr('style', "display: none");
+				$("#busca").attr('style', "display: block");
+				
+				for(i=0;i<res.length;i++){
+					var html = "<i class='fas fa-search mt-2' style='font-size: 20px;'></i>"+
+					"<a href='#' class='text-link' style='font-size: 20px;'>"+res[i].nome+"</a><br>";	
+					$("#body_busca").append(html);
+				}
+			}
+
+			if(txt.length <= 0){
+				$("#cards").attr('style', "display: block");
+				$("#busca").attr('style', "display: none");
+			}
+
+
+		}
+	});
+});
+$("#btn-search").click(function(){
+	var txt = $("#search").val();
+	$("#form-search").bind("submit", function(e){
+		e.preventDefault();
+		$("#campoSearch").html("<i>Você pesquisou por: <strong>"+txt+"</strong><i>");	
+	});
+});
+
+function getCard(title,url,nome,id, preco){
+	var html = "<div class='card mt-2' id='produto'>"+
+				"<div class='card-body'>"+
+					"<div class='card-title'><h5>"+title+"</h5></div>"+
+					"<hr id='linhaProduto'>"+
+					"<div class='clearfix'>"+
+						"<div class='float-left'>"+
+							"<img src='assets/"+url+"' style='height: 150px;width: 150px;'>"
+						+"</div>"+
+						"<div class='float-left ml-5'>"+
+							"<h4>"+nome+"</h4>"+
+							"<h5>"+preco+"</h5>"
+						+"</div>"+
+						"<div class='float-right mt-4'>"+
+							"<button onclick='addCarrinho("+id+")' class='btn btn-success'><i class='fas fa-plus mr-2'></i>Adicionar no carrinho</button>"
+						+"</div>"
+					+"</div>"
+				+"</div>"
+			+"</div>";
+	return html;	
+}

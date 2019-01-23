@@ -114,4 +114,15 @@ class HomeController extends Controller {
 		}
 		
 	}
+
+	public function getItem(){
+		$data = array();
+		
+		if(!empty($_POST['txt'])){
+			$p = new Produtos;
+			$data = $p->getProds($_POST['txt']);
+		}
+
+		echo json_encode($data);
+	}
 }

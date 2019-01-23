@@ -29,4 +29,19 @@ class Produtos extends Model{
 
 		return $array;
 	}
+
+	public function getProds($txt)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT nome FROM produtos WHERE nome LIKE :nome");
+		$sql->bindValue(":nome", "%".$txt."%");
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+	}
 }
