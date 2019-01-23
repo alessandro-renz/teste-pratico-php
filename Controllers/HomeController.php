@@ -45,10 +45,27 @@ class HomeController extends Controller {
 		if(!empty($_POST['email']) && !empty($_POST['senha'])){
 			$c = new Clients;
 			$user = $c->check($_POST['email'], $_POST['senha']);	
+			if(isset($user) && !empty($user)){
+				$user["response"] = true;
 
+			}else{
+				$user['response'] = false;
+			}
 			echo json_encode($user);
 
 		}
+	}
+	public function verificaSessao()
+	{	
+		$array = array();
+		if(isset($_SESSION['user'])){
+			$array['response'] = true;
+			$array['id'] = $_SESSION['user'];
+		}else{
+			$array['response'] = false;
+		}
+
+		echo json_encode($array);
 	}
 
 	public function insertUser()
@@ -58,6 +75,24 @@ class HomeController extends Controller {
 			$c = new Clients;
 			$c->insert($_POST['nome_cadastro'], $_POST['email_cadastro'], $_POST['estado_cadastro'], $_POST['cidade_cadastro'], $_POST['bairro_cadastro'], $_POST['rua_cadastro'], $_POST['numero_cadastro'], $_POST['senha_cadastro'], $_POST['cep_cadastro']);	
 
+		}
+	}
+
+	public function getUserById($id){
+		if(!empty($id)){
+			$c = new Clients;
+			$dados = $c->getUserById($id);
+			echo json_encode($dados);
+		}
+	}
+
+	public function sair(){
+		if(isset($_SESSION['user'])){
+			unset($_SESSION['user']);
+			header("Location: /onehost");
+			exit;
+		}else{
+			header("Location: /onehost");
 		}
 	}
 }

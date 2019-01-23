@@ -20,11 +20,19 @@
           <form class="form-inline">
             <input class="form-control mr-sm-5" type="search" placeholder="O que você procura..." aria-label="Search" style="width: 400px;">
           </form>
-          <div class="clearfix">
-            <i id="buy" class='fas fa-shopping-cart mr-4 text-secondary' style="font-size: 30px;"><span style="font-size: 15px;" class="badge badge-pill badge-success" id="qt_prods"></span></i>
+          <div class="clearfix icones">
+            <i id="buy" class='fas fa-shopping-cart mr-2 float-left text-secondary' style="font-size: 30px;"><span style="font-size: 15px;" class="badge badge-pill badge-success" id="qt_prods"></span></i>
+
+            <div id="drop" class="dropdown float-left mr-3" style="display:none;">
+              <a href="#" id="nome_drop" class="btn text-danger dropdown-toggle" data-toggle="dropdown">Nome</a>
             
-            <i id="user" class='fas fa-user mr-4 text-secondary' style="font-size: 30px;"></i>
-            <i id="newuser" class='fas fa-user-plus mr-2 text-success' style="font-size: 30px;"></i>
+              <div class="dropdown-menu">
+                <a id="btn_sair" href="home/sair" class="dropdown-item text-danger">Sair</a>
+              </div>
+            </div>
+
+            <i id="user" class='fas fa-user mr-3 text-secondary float-left' style="font-size: 30px;"></i>
+            <i id="newuser" class='fas fa-user-plus mr-2 text-success float-left' style="font-size: 30px;"></i>
           </div>
         </nav>
       </div>

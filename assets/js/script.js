@@ -20,6 +20,12 @@ $(function(){
 		$("#login").modal("hide");
 		$("#cadastro").modal("show");
 	});
+
+	$("#btn_sair").click(function(){
+		$("#user").attr("style", "display: block");
+		$("#newuser").attr("style", "display: block");
+		$("#drop").attr("style", "display: none");
+	});
 });
 
 function addCarrinho(id)
@@ -46,6 +52,21 @@ function getQT()
 }
 getQT();
 
+function verificaSessao(){
+	$.getJSON("home/verificaSessao", function(res){
+		if(res.response === true){
+			$.getJSON("home/getUserById/"+res.id, function(response){
+				$("#user").attr("style", "display: none");
+				$("#newuser").attr("style", "display: none");
+				$("#drop").attr("style", "display: block");
+				$("#nome_drop").html("<h7>"+response.nome+"</h7>");
+				$("#login").modal("hide");
+			});
+
+		}
+	});
+	
+}
 function logar(){
 	$("#form_login").bind("submit", function(e){
 		e.preventDefault();
@@ -55,13 +76,11 @@ function logar(){
 			url:"home/checkUser",
 			type:'POST',
 			dataType:"JSON",
-			data:form,
-			success:function(res){
-				console.log(form);
-			}
+			data:form
 		});
 	});
-	
+
+	verificaSessao();
 }
 function cadastrar(){
 	$("#form_cadastro").bind("submit", function(e){
@@ -78,11 +97,10 @@ function cadastrar(){
 				dataType:"JSON",
 				data:form,
 				success:function(res){
-					console.log(form);
+					$("#cadastro").modal("hide");
 				}
 			});	
 		}
 		
 	});
-	
 }
