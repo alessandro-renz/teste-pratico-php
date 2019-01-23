@@ -49,7 +49,7 @@ function getQT()
 		$("#qt_prods").html(qt);
 	});
 }
-getQT();
+
 
 function verificaSessao(){
 	$.getJSON("home/verificaSessao", function(res){
@@ -102,4 +102,36 @@ function cadastrar(){
 		}
 		
 	});
+}
+
+$("#buy").click(function(){
+	$.getJSON("home/getPurchase", function(res){
+		for(i=0;i<res.length;i++)
+		{
+			var linha = "<tr>"+
+						"<td>"+res[i].nome+"</td>"+
+						"<td>"+res[i].qt+"</td>"+
+						"<td>"+res[i].preco+"</td>"
+					+"</tr>";
+			$("#body_table").append(linha);
+		}
+	});
+	$("#modal_carrinho").modal("show");
+});
+
+function limparCarrinho()
+{
+	$.ajax({
+		type:"POST",
+		url:"home/clearPurchase"
+	});
+
+	$("#modal_carrinho").modal("hide");
+	window.location.href=window.location.href;
+}
+
+function loadPage()
+{
+	getQT();
+	verificaSessao();
 }

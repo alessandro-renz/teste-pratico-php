@@ -3,6 +3,7 @@ namespace Controllers;
 use Core\Controller;
 use Models\Produtos;
 use Models\Clients;
+use Models\Vendas;
 
 class HomeController extends Controller {
 	public function index() 
@@ -37,7 +38,6 @@ class HomeController extends Controller {
 	public function getQtProds()
 	{
 		echo json_encode($_SESSION['prods']);
-		
 	}
 
 	public function checkUser()
@@ -94,5 +94,24 @@ class HomeController extends Controller {
 		}else{
 			header("Location: /onehost");
 		}
+	}
+
+	public function getPurchase(){
+		echo json_encode($_SESSION['prods']);
+	}
+	public function clearPurchase()
+	{
+		$v = new Vendas();
+		$qt_total = 0;
+		if(isset($_SESSION['user'])){
+			foreach($_SESSION['prods'] as $value){
+				$qt_total += $value['preco'];
+			}
+
+			$v->insertPurchase($_SESSION['user'], count($_SESSION['prods']), $qt_total);
+			unset($_SESSION['prods']);
+			exit;
+		}
+		
 	}
 }

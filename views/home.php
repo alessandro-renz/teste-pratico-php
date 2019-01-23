@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?=URL?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
-  <body>
+  <body onload="loadPage()">
    
   <div class="container">
   	<div class="row">
@@ -108,6 +108,31 @@
 	<script type="text/javascript" src="<?=URL?>assets/js/script.js"></script>
 </body>
 </html>
+
+<!-- Modal do carrinho de compras!-->
+<div class="modal fade" id="modal_carrinho">
+    <div class="modal-lg modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4><strong>Carrinho de compras</strong></h4>
+            <button type="close" class="close" data-dismiss="modal"><span style="color: red;">&times;</span></button>    
+        </div>
+        <div class="modal-body">
+           <table class='table table-striped table-bordered'>
+             <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Quantidade</th>
+                  <th>Preço</th>
+                </tr>
+             </thead>
+             <tbody id="body_table"></tbody>
+           </table>   
+          <button id="btn-carrinho" class="btn btn-success" onclick="limparCarrinho()">Finalizar Compra</button>
+        </div>
+      </div>
+    </div>
+</div>
 
 <!-- Modal de login!-->
 <div class="modal fade" id="login">
