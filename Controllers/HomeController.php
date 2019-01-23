@@ -29,15 +29,15 @@ class HomeController extends Controller {
 	public function insertProdsByAjax()
 	{
 		if(!empty($_POST['id']) && !empty($_POST['nome']) && !empty($_POST['preco'])){
-			$_SESSION['prods'][] = array("id"=>$_POST['id'], "nome"=>$_POST['nome'], "preco"=>$_POST['preco'], "url"=>$_POST['url']);
-			echo json_encode($_SESSION['prods']);
+			$_SESSION['prods'][] = array("id"=>$_POST['id'], "nome"=>$_POST['nome'], "preco"=>$_POST['preco'], "url"=>$_POST['url'], "qt"=>1);
+			
 		}
 	}
 
 	public function getQtProds()
 	{
 		echo json_encode($_SESSION['prods']);
-		exit;
+		
 	}
 
 	public function checkUser()

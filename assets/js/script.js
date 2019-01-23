@@ -35,17 +35,16 @@ function addCarrinho(id)
 			url:"home/insertProdsByAjax",
 			type:'POST',
 			dataType:"JSON",
-			data:{id:res.id, nome:res.nome, preco:res.preco, url:res.url},
-			success:function(res){
-				var qt = res.length;
-				$("#qt_prods").html(qt);
-			}
+			data:{id:res.id, nome:res.nome, preco:res.preco, url:res.url}
+
 		});
+		getQT();
 	});
+
 }
 function getQT()
 {
-	$.getJSON("home/getQtProds/", function(res){
+	$.getJSON("home/getQtProds", function(res){
 		var qt = res.length;
 		$("#qt_prods").html(qt);
 	});
