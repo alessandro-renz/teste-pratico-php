@@ -137,61 +137,60 @@
             <button type="close" class="close" data-dismiss="modal"><span style="color: red;">&times;</span></button>    
         </div>
         <div class="modal-body">
-            <form action="" method="POST">
-              
+            <form method="POST" id="form_cadastro">
               <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input class="form-control" type="nome" id="nome_cadastro" placeholder="Digite o nome...">
+                <input class="form-control" type="text" name="nome_cadastro" placeholder="Digite o nome...">
               </div>
 
               <div class="form-group">
                 <label for="email">E-mail:</label>
-                <input class="form-control" type="email" id="email_cadastro" placeholder="Digite o email...">
+                <input class="form-control" type="email" name="email_cadastro" placeholder="Digite o email...">
               </div>
 
               <div class="form-row">
                 <div class="col">
                   <label for="senha">Senha:</label>
-                  <input class="form-control" type="senha" id="senha_cadastro" placeholder="Digite a senha...">
+                  <input class="form-control" id='senha1' type="password" name="senha_cadastro" placeholder="Digite a senha...">
                 </div>
                 <div class="col">
                   <label for="senha2">Confirme a senha:</label>
-                  <input class="form-control" type="senha2" id="senha2_cadastro" placeholder="Digite a senha novamente...">
+                  <input class="form-control" type="password" id='senha2' name="senha2_cadastro" placeholder="Digite a senha novamente...">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col">
                   <label for="cep">CEP:</label>
-                  <input class="form-control" type="cep" id="cep_cadastro" placeholder="Digite o cep...">
+                  <input class="form-control" type="text" name="cep_cadastro" placeholder="Digite o cep...">
                 </div>
                 <div class="col">
                   <label for="cidade">Cidade:</label>
-                  <input class="form-control" type="cidade" id="cidade_cadastro" placeholder="Digite a cidade...">
+                  <input class="form-control" type="text" name="cidade_cadastro" placeholder="Digite a cidade...">
                 </div>
               </div>
               <div class="form-row">
                 <div class="col">
                   <label for="estado">Estado:</label>
-                  <input class="form-control" type="estado" id="estado_cadastro" placeholder="Digite o estado...">
+                  <input class="form-control" type="text" name="estado_cadastro" placeholder="Digite o estado...">
                 </div>
                 <div class="col">
                   <label for="bairro">Bairro:</label>
-                  <input class="form-control" type="bairro" id="bairro_cadastro" placeholder="Digite a cidade...">
+                  <input class="form-control" type="text" name="bairro_cadastro" placeholder="Digite a cidade...">
                 </div>
               </div>
               <div class="form-row">
                 <div class="col">
                   <label for="rua">Rua:</label>
-                  <input class="form-control" type="rua" id="rua_cadastro" placeholder="Digite o nome da rua...">
+                  <input class="form-control" type="text" name="rua_cadastro" placeholder="Digite o nome da rua...">
                 </div>
                 <div class="col">
                   <label for="numero">Numero:</label>
-                  <input class="form-control" type="numero" id="numero_cadastro" placeholder="Digite o numero da casa...">
+                  <input class="form-control" type="text" name="numero_cadastro" placeholder="Digite o numero da casa...">
                 </div>
               </div>
               
-              <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-plus mr-2"></i>Cadastrar</button>
+              <button onclick="cadastrar()" class="btn btn-primary mt-3"><i class="fas fa-plus mr-2"></i>Cadastrar</button>
             </form>  
         </div>
       </div>

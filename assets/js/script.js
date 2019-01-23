@@ -50,15 +50,39 @@ function logar(){
 	$("#form_login").bind("submit", function(e){
 		e.preventDefault();
 		var form = $(this).serialize();
+		
 		$.ajax({
 			url:"home/checkUser",
 			type:'POST',
 			dataType:"JSON",
 			data:form,
 			success:function(res){
-				console.log(res.length);
+				console.log(form);
 			}
 		});
+	});
+	
+}
+function cadastrar(){
+	$("#form_cadastro").bind("submit", function(e){
+		e.preventDefault();
+		var senha1 = $("#senha1").val();
+		var senha2 = $("#senha2").val();
+		
+		if(senha1 == senha2){
+			var form = $(this).serialize();
+			
+			$.ajax({
+				url:"home/insertUser",
+				type:'POST',
+				dataType:"JSON",
+				data:form,
+				success:function(res){
+					console.log(form);
+				}
+			});	
+		}
+		
 	});
 	
 }

@@ -5,7 +5,8 @@ use Models\Produtos;
 use Models\Clients;
 
 class HomeController extends Controller {
-	public function index() {
+	public function index() 
+	{
 		$data = array();
 
 		$p = new Produtos();
@@ -13,7 +14,8 @@ class HomeController extends Controller {
 		
 		$this->loadView("home", $data);
 	}
-	public function getProdsByAjax($id) {
+	public function getProdsByAjax($id) 
+	{
 		$data = array();
 
 		$p = new Produtos();
@@ -24,24 +26,37 @@ class HomeController extends Controller {
 		echo json_encode($data);
 	}
 
-	public function insertProdsByAjax(){
+	public function insertProdsByAjax()
+	{
 		if(!empty($_POST['id']) && !empty($_POST['nome']) && !empty($_POST['preco'])){
 			$_SESSION['prods'][] = array("id"=>$_POST['id'], "nome"=>$_POST['nome'], "preco"=>$_POST['preco'], "url"=>$_POST['url']);
 			echo json_encode($_SESSION['prods']);
 		}
 	}
 
-	public function getQtProds(){
+	public function getQtProds()
+	{
 		echo json_encode($_SESSION['prods']);
 		exit;
 	}
 
-	public function checkUser(){
+	public function checkUser()
+	{
 		if(!empty($_POST['email']) && !empty($_POST['senha'])){
 			$c = new Clients;
 			$user = $c->check($_POST['email'], $_POST['senha']);	
 
 			echo json_encode($user);
+
+		}
+	}
+
+	public function insertUser()
+	{
+		if(!empty($_POST['nome_cadastro']) && !empty($_POST['email_cadastro'])&& !empty($_POST['estado_cadastro']) && !empty($_POST['cidade_cadastro']) && !empty($_POST['bairro_cadastro']) && !empty($_POST['rua_cadastro']) && !empty($_POST['numero_cadastro']) && !empty($_POST['senha_cadastro']) && !empty($_POST['cep_cadastro'])){
+
+			$c = new Clients;
+			$c->insert($_POST['nome_cadastro'], $_POST['email_cadastro'], $_POST['estado_cadastro'], $_POST['cidade_cadastro'], $_POST['bairro_cadastro'], $_POST['rua_cadastro'], $_POST['numero_cadastro'], $_POST['senha_cadastro'], $_POST['cep_cadastro']);	
 
 		}
 	}
