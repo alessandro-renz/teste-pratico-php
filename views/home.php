@@ -60,14 +60,7 @@
           <hr class="bg-primary">
           <div class="card-body">
             <form action="" method="POST">
-              <div class="form-group">
-                <label for="nome">Nome:</label>
-                <select name="" id="nome_prod" class="form-control">
-                  <option value=""></option>
-                  <option value="1">Crescente</option>
-                  <option value="2">Decrescente</option>
-                </select>
-              </div>
+              
               <div class="form-group">
                 <label for="preco">Preço:</label>
                 <select name="" id="preco" class="form-control">
@@ -76,9 +69,10 @@
                   <option value="2">Mais caro</option>
                 </select>
               </div>
+
               <div class="form-group">
                 <label for="marca">Marca:</label>
-                <select name="" id="marca" class="form-control">
+                <select name="marca" id="marca" class="form-control">
                   <option value=""></option>
                 </select>
               </div>

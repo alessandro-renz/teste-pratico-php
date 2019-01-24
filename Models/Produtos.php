@@ -35,7 +35,21 @@ class Produtos extends Model{
 		$array = array();
 
 		$sql = $this->db->prepare("SELECT nome FROM produtos WHERE nome LIKE :nome");
-		$sql->bindValue(":nome", "%".$txt."%");
+		$sql->bindValue(":nome", $txt."%");
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+	}
+
+	public function getFornecedor()
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT fornecedor FROM produtos GROUP BY fornecedor");
 		$sql->execute();
 
 		if($sql->rowCount() > 0){

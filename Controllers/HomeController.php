@@ -125,4 +125,14 @@ class HomeController extends Controller {
 
 		echo json_encode($data);
 	}
+	
+	public function getMarcas(){
+		$data = array();
+			
+		$p = new Produtos;
+		$data = $p->getFornecedor();
+		
+		echo json_encode($data);
+	}
 }
+
