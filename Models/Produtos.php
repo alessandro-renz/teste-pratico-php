@@ -58,4 +58,18 @@ class Produtos extends Model{
 
 		return $array;
 	}
+
+	public function getProdsByMarca($marca){
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM produtos WHERE fornecedor=:fornecedor");
+		$sql->bindValue(":fornecedor", $marca);
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+	}
 }

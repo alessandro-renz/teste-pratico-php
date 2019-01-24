@@ -125,7 +125,7 @@ class HomeController extends Controller {
 
 		echo json_encode($data);
 	}
-	
+
 	public function getMarcas(){
 		$data = array();
 			
@@ -133,6 +133,33 @@ class HomeController extends Controller {
 		$data = $p->getFornecedor();
 		
 		echo json_encode($data);
+	}
+
+	public function getProdsByMarca(){
+		if(!empty($_POST['value'])){
+			$data = array();
+			
+			$p = new Produtos;
+			$data = $p->getProdsByMarca($_POST['value']);
+		
+			echo json_encode($data);
+		}
+	}
+
+	public function getEndereco(){
+		if(!empty($_POST['cep'])){
+			$cep = $_POST['cep'];
+			$url = "viacep.com.br/ws/".$cep."/json/";
+
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			$dados = curl_exec($ch);
+			curl_close($ch);
+
+			echo $dados;
+		}
 	}
 }
 

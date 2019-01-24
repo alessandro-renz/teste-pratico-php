@@ -63,7 +63,7 @@
               
               <div class="form-group">
                 <label for="preco">Preço:</label>
-                <select name="" id="preco" class="form-control">
+                <select name="marca" id="preco" class="form-control">
                   <option value=""></option>
                   <option value="1">Mais barato</option>
                   <option value="2">Mais caro</option>
@@ -184,19 +184,19 @@
         <div class="modal-body">
             <form method="POST" id="form_cadastro">
               <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input class="form-control" type="text" name="nome_cadastro" placeholder="Digite o nome...">
+                <label for="nome_cadastro">Nome:</label>
+                <input class="form-control" id="nome_cadastro" type="text" name="nome_cadastro" placeholder="Digite o nome...">
               </div>
 
               <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input class="form-control" type="email" name="email_cadastro" placeholder="Digite o email...">
+                <label for="email_cadastro">E-mail:</label>
+                <input class="form-control" id="email_cadastro" type="email" name="email_cadastro" placeholder="Digite o email...">
               </div>
 
               <div class="form-row">
                 <div class="col">
                   <label for="senha">Senha:</label>
-                  <input class="form-control" id='senha1' type="password" name="senha_cadastro" placeholder="Digite a senha...">
+                  <input class="form-control" id='senha1' type="password" name="senha_cadastro"  placeholder="Digite a senha...">
                 </div>
                 <div class="col">
                   <label for="senha2">Confirme a senha:</label>
@@ -207,31 +207,31 @@
               <div class="form-row">
                 <div class="col">
                   <label for="cep">CEP:</label>
-                  <input class="form-control" type="text" name="cep_cadastro" placeholder="Digite o cep...">
+                  <input class="form-control" id="cep" type="text" onkeyup="carregaCep()" name="cep_cadastro" placeholder="Digite o cep...">
                 </div>
                 <div class="col">
                   <label for="cidade">Cidade:</label>
-                  <input class="form-control" type="text" name="cidade_cadastro" placeholder="Digite a cidade...">
+                  <input class="form-control" id="cidade" type="text" name="cidade_cadastro" placeholder="Preencha o CEP primeiro">
                 </div>
               </div>
               <div class="form-row">
                 <div class="col">
                   <label for="estado">Estado:</label>
-                  <input class="form-control" type="text" name="estado_cadastro" placeholder="Digite o estado...">
+                  <input class="form-control" type="text" id="estado" name="estado_cadastro" placeholder="Preencha o CEP primeiro">
                 </div>
                 <div class="col">
                   <label for="bairro">Bairro:</label>
-                  <input class="form-control" type="text" name="bairro_cadastro" placeholder="Digite a cidade...">
+                  <input class="form-control" type="text" name="bairro_cadastro" id="bairro" placeholder="Digite o bairro">
                 </div>
               </div>
               <div class="form-row">
                 <div class="col">
                   <label for="rua">Rua:</label>
-                  <input class="form-control" type="text" name="rua_cadastro" placeholder="Digite o nome da rua...">
+                  <input class="form-control" type="text" id="rua" name="rua_cadastro" placeholder="Digite o nome da rua...">
                 </div>
                 <div class="col">
                   <label for="numero">Numero:</label>
-                  <input class="form-control" type="text" name="numero_cadastro" placeholder="Digite o numero da casa...">
+                  <input class="form-control" type="text" name="numero_cadastro" id="numero" placeholder="Digite o numero da casa...">
                 </div>
               </div>
               

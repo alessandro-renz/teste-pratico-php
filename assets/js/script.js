@@ -180,3 +180,36 @@ $("#search").keyup(function(){
 	});
 });
 
+function carregaCep(){
+	
+	var cep = $("#cep").val();
+	$("#cidade").attr("placeholder", "carregando...");
+	$("#estado").attr("placeholder", "carregando...");
+	if(cep.length == 8){
+		$.ajax({
+			type:"POST",
+			url:"home/getEndereco",
+			dataType:"json",
+			data:{cep:cep},
+			success:function(j){
+				$("#cidade").val(j.localidade);
+				$("#estado").val(j.uf);
+				$("#cep").css("border", "2px solid green");
+				$("#cidade").css("border", "2px solid green");
+				$("#estado").css("border", "2px solid green");
+			},
+			error:function(){
+				$("#cep").css("border", "2px solid red");
+				$("#cidade").css("border", "2px solid red");
+				$("#estado").css("border", "2px solid red");
+				$("#cidade").attr("placeholder", "CEP não existe!");
+				$("#estado").attr("placeholder", "CEP não existe!");
+			}
+		});
+	}else{
+		$("#cidade").val("");
+		$("#estado").val("");
+	}
+	
+}
+
