@@ -94,11 +94,9 @@ function cadastrar(){
 				url:"home/insertUser",
 				type:'POST',
 				dataType:"JSON",
-				data:form,
-				success:function(res){
-					$("#cadastro").modal("hide");
-				}
+				data:form
 			});	
+			$("#cadastro").modal("hide");
 		}
 		
 	});
