@@ -110,8 +110,8 @@ class HomeController extends Controller {
 
 			$v->insertPurchase($_SESSION['user'], count($_SESSION['prods']), $qt_total);
 			unset($_SESSION['prods']);
-			exit;
 		}
+
 		
 	}
 

@@ -123,11 +123,13 @@ function limparCarrinho()
 {
 	$.ajax({
 		type:"POST",
-		url:"home/clearPurchase"
+		url:"home/clearPurchase",
+		success:function(res){
+			$("#modal_carrinho").modal("hide");
+			window.location.href=window.location.href;
+		}
 	});
-
-	$("#modal_carrinho").modal("hide");
-	window.location.href=window.location.href;
+	
 }
 
 function carregaMarcas(){
@@ -212,4 +214,22 @@ function carregaCep(){
 	}
 	
 }
+
+$(function(){
+	$("#senha2").bind("blur", function(){
+		var senha1 = $("#senha1").val();
+		var senha2 = $("#senha2").val();
+
+		if(senha1 != senha2){
+	 		$("#senha1").css("border", "2px solid red");
+	 		$("#senha2").css("border", "2px solid red");
+	 		$("#senha1").after("<p class='text-danger msg-senha'>As senhas não são iguais!</p>");
+	 		$("#senha2").after("<p class='text-danger msg-senha'>As senhas não são iguais!</p>");
+		}else{
+			$(".msg-senha").html("");
+			$("#senha1").css("border", "2px solid green");
+			$("#senha2").css("border", "2px solid green");
+		}
+	});
+});
 

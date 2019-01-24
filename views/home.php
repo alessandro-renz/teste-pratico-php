@@ -140,7 +140,10 @@
              </thead>
              <tbody id="body_table"></tbody>
            </table>   
-          <button id="btn-carrinho" class="btn btn-success" onclick="limparCarrinho()">Finalizar Compra</button>
+          <div>
+            <button id="btn-carrinho" class="btn btn-success" onclick="limparCarrinho()">Finalizar Compra</button>
+            <div class="alert alert-info mt-2">Precisa estar logado para finalizar a compra.</div>
+          </div>
         </div>
       </div>
     </div>
