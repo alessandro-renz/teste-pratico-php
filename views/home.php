@@ -15,7 +15,7 @@
   	<div class="row">
       <div class="col-12">
         <nav class="navbar navbar-light bg-light">
-          <a class="navbar-brand">
+          <a class="navbar-brand col-3">
             <img src="<?=URL?>assets/images/onehost.jpg" style="height: 100px;">
           </a>
           <form method="POST" id="form-search">
@@ -167,8 +167,9 @@
                 <label for="senha">Senha:</label>
                 <input class="form-control" type="password" name="senha" id="senha" placeholder="Digite a senha...">
               </div>
-              <button onclick="logar()" class="btn btn-primary"><i class="fas fa-sign-in-alt mr-2"></i>Entrar</button>
+              <button type='submit' class="btn btn-primary"><i class="fas fa-sign-in-alt mr-2"></i>Entrar</button>
             </form>
+
 
         </div>
       </div>

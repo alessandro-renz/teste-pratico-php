@@ -66,7 +66,8 @@ function verificaSessao(){
 	});
 	
 }
-function logar(){
+$(function(){
+
 	$("#form_login").bind("submit", function(e){
 		e.preventDefault();
 		var form = $(this).serialize();
@@ -75,12 +76,17 @@ function logar(){
 			url:"home/checkUser",
 			type:'POST',
 			dataType:"JSON",
-			data:form
+			data:form,
+			success:function(){
+				$("#login").modal("hide");
+				window.location.href=window.location.href;
+			}
 		});
 	});
+	
 
-	verificaSessao();
-}
+})
+
 function cadastrar(){
 	$("#form_cadastro").bind("submit", function(e){
 		e.preventDefault();
