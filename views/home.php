@@ -113,6 +113,17 @@
       <!-- fim card default !--> 
       </div>
     </div> 
+
+     <!-- paginação do site !-->
+    <footer class="row justify-content-end mt-3 ml-2">
+      <ul class="pagination col-9">
+        <?php for($i=0;$i<$paginas;$i++): ?> 
+        <li class="page-item"><a class="page-link" href="<?=URL?>home/nextPage/<?=$i?>"><?=$i?></a></li>
+        <?php endfor; ?>
+      </ul>
+    </footer>
+    <!-- fim da paginação do site !-->
+
   </div>
 
 	<script type="text/javascript" src="<?=URL?>assets/js/jquery.js"></script>

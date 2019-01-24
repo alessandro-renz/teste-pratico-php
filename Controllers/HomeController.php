@@ -11,9 +11,29 @@ class HomeController extends Controller {
 		$data = array();
 
 		$p = new Produtos();
-		$data['produtos'] = $p->getAll();
-		
+		$data['produtos'] = $p->getAll(0);
+		$data['paginas'] = $p->countAll();
 		$this->loadView("home", $data);
+	}
+	public function nextPage($page)
+	{
+		$data = array();
+		if(isset($page) && !empty($page)){
+			if($page == 0){
+				header("Location: /onehost");
+			}
+
+			$skip = ($page*4);
+			$take = 4;
+
+			$p = new Produtos();
+			$data['produtos'] = $p->getAll($skip,$take);
+			$data['paginas'] = $p->countAll();
+			$this->loadView("home", $data);
+		}else{
+			header("Location: /onehost");
+		}
+		
 	}
 	public function getProdsByAjax($id) 
 	{

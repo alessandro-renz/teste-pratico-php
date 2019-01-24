@@ -4,10 +4,10 @@ use Core\Model;
 
 class Produtos extends Model{
 
-	public function getAll()
+	public function getAll($skip, $take = 4)
 	{
 		$array = array();
-		$sql = $this->db->prepare("SELECT * FROM produtos");
+		$sql = $this->db->prepare("SELECT * FROM produtos LIMIT $skip, $take");
 		$sql->execute();
 
 		if($sql->rowCount() > 0){
@@ -71,5 +71,16 @@ class Produtos extends Model{
 		}
 
 		return $array;
+	}
+	public function countAll()
+	{
+		$count = 0;
+		$sql = $this->db->prepare("SELECT count(*) as qt FROM produtos");
+		$sql->execute();
+
+		$count = $sql->fetch();
+		
+		$paginas = $count['qt']/4;
+		return $paginas;
 	}
 }
