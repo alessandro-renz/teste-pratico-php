@@ -42,7 +42,7 @@
               <a href="#" id="nome_drop" class="btn text-danger dropdown-toggle" data-toggle="dropdown">Nome</a>
             
               <div class="dropdown-menu">
-                <a id="btn_sair" href="home/sair" class="dropdown-item text-danger">Sair</a>
+                <a id="btn_sair" href="<?=URL?>home/sair" class="dropdown-item text-danger">Sair</a>
               </div>
             </div>
 

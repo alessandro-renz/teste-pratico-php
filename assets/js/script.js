@@ -30,9 +30,9 @@ $(function(){
 
 function addCarrinho(id)
 {
-	$.getJSON("home/getProdsByAjax/"+id, function(res){
+	$.getJSON("/onehost/home/getProdsByAjax/"+id, function(res){
 		$.ajax({
-			url:"home/insertProdsByAjax",
+			url:"/onehost/home/insertProdsByAjax",
 			type:'POST',
 			dataType:"JSON",
 			data:{id:res.id, nome:res.nome, preco:res.preco, url:res.url}
@@ -44,7 +44,7 @@ function addCarrinho(id)
 }
 function getQT()
 {
-	$.getJSON("home/getQtProds", function(res){
+	$.getJSON("/onehost/home/getQtProds", function(res){
 		var qt = res.length;
 		$("#qt_prods").html(qt);
 	});
@@ -52,9 +52,9 @@ function getQT()
 
 
 function verificaSessao(){
-	$.getJSON("home/verificaSessao", function(res){
+	$.getJSON("/onehost/home/verificaSessao", function(res){
 		if(res.response === true){
-			$.getJSON("home/getUserById/"+res.id, function(response){
+			$.getJSON("/onehost/home/getUserById/"+res.id, function(response){
 				$("#user").attr("style", "display: none");
 				$("#newuser").attr("style", "display: none");
 				$("#drop").attr("style", "display: block");
@@ -73,7 +73,7 @@ $(function(){
 		var form = $(this).serialize();
 		
 		$.ajax({
-			url:"home/checkUser",
+			url:"/onehost/home/checkUser",
 			type:'POST',
 			dataType:"JSON",
 			data:form,
@@ -97,7 +97,7 @@ function cadastrar(){
 			var form = $(this).serialize();
 			
 			$.ajax({
-				url:"home/insertUser",
+				url:"/onehost/home/insertUser",
 				type:'POST',
 				dataType:"JSON",
 				data:form
@@ -109,7 +109,7 @@ function cadastrar(){
 }
 
 $("#buy").click(function(){
-	$.getJSON("home/getPurchase", function(res){
+	$.getJSON("/onehost/home/getPurchase", function(res){
 		for(i=0;i<res.length;i++)
 		{
 			var linha = "<tr>"+
@@ -127,7 +127,7 @@ function limparCarrinho()
 {
 	$.ajax({
 		type:"POST",
-		url:"home/clearPurchase",
+		url:"/onehost/home/clearPurchase",
 		success:function(res){
 			$("#modal_carrinho").modal("hide");
 			window.location.href=window.location.href;
@@ -137,7 +137,7 @@ function limparCarrinho()
 }
 
 function carregaMarcas(){
-	$.getJSON("home/getMarcas", function(res){
+	$.getJSON("/onehost/home/getMarcas", function(res){
 		for(i=0;i<res.length;i++)
 		{
 			var marca = res[i].fornecedor.replace("_", " ");
@@ -160,7 +160,7 @@ $("#search").keyup(function(){
 
 	$.ajax({
 		type:"POST",
-		url:"home/getItem",
+		url:"/onehost/home/getItem",
 		dataType:'json',
 		data:{txt:txt},
 		success:function(res){
@@ -194,7 +194,7 @@ function carregaCep(){
 	if(cep.length == 8){
 		$.ajax({
 			type:"POST",
-			url:"home/getEndereco",
+			url:"/onehost/home/getEndereco",
 			dataType:"json",
 			data:{cep:cep},
 			success:function(j){
